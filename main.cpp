@@ -1,10 +1,16 @@
 #include <iostream>
+#include <pugixml.hpp>
+#include <ftxui/component/screen_interactive.hpp>
+#include <ftxui/component/component.hpp>
+#include <ftxui/dom/elements.hpp>
+#include <memory>
+
 using namespace std;
-void testFun();
+using namespace pugi;
+using namespace ftxui;
+
+
 int main() {
-	testFun();
+	cout << "Hello World\n";
 	return 0;
-}
-void testFun() {
-	cout << "This is a testing function\n";
 }

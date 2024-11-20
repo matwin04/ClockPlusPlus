@@ -4,14 +4,20 @@ project(ClockPlusPlus)
 
 message("----MW: Building Project ----")
 
-find_package(tinyxml2 CONFIG REQUIRED)
-find_package(pugixml CONFIG REQUIRED)
-find_package(Raylib)
 
-add_executable(${PROJECT_NAME} main.cpp)
+find_package(Raylib)
+find_package(ftxui CONFIG REQUIRED)
+find_package(pugixml REQUIRED)
+message("All packages have been found")
+
+
+add_executable(${PROJECT_NAME} main.cpp "calendarEvent.h" "calendarEvent.cpp" "agenda.h" "agenda.cpp")
 target_link_libraries(${PROJECT_NAME} PRIVATE 
-	tinyxml2::tinyxml2
+	raylib
 	pugixml::shared
 	pugixml::pugixml
-	raylib
+	ftxui::dom
+	ftxui::screen
+	ftxui::component
+
 )

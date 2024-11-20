@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<calendar>
+	<year value="2024">
+		<month value="11">
+			<day value="19">
+				<event time="09:15">Psychiatrist</event>
+				<event time="10:15">BIO 109</event>
+			</day>
+		</month>
+	</year>
+</calendar>
