@@ -1,11 +1,40 @@
-<?xml version="1.0" encoding="utf-8"?>
 <calendar>
-	<year value="2024">
-		<month value="11">
-			<day value="19">
-				<event time="09:15">Psychiatrist</event>
-				<event time="10:15">BIO 109</event>
-			</day>
-		</month>
-	</year>
+    <year value="2024">
+        <month name="November">
+            <day id="1" date="19">
+                <time>10:00 AM</time>
+                <location>Office</location>
+                <startTime>10:00</startTime>
+                <endTime>12:00</endTime>
+                <category>Work</category>
+                <event>Team meeting</event>
+            </day>
+            <day id="2" date="20">
+                <time>2:00 PM</time>
+                <location>Home</location>
+                <startTime>14:00</startTime>
+                <endTime>15:30</endTime>
+                <category>Personal</category>
+                <event>Doctor appointment</event>
+            </day>
+        </month>
+        <month name="December">
+            <day id="3" date="25">
+                <time>6:00 PM</time>
+                <location>Home</location>
+                <startTime>18:00</startTime>
+                <endTime>20:00</endTime>
+                <category>Holiday</category>
+                <event>Christmas Dinner</event>
+            </day>
+            <day id="4" date="31">
+                <time>11:00 PM</time>
+                <location>City Center</location>
+                <startTime>23:00</startTime>
+                <endTime>01:00</endTime>
+                <category>Celebration</category>
+                <event>New Year Countdown</event>
+            </day>
+        </month>
+    </year>
 </calendar>
