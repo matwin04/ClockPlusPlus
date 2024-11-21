@@ -64,7 +64,7 @@ void displayAgenda(const agenda& agenda) {
 
     // Create the table and render it into an Element
     ftxui::Table table = ftxui::Table(rows);
-    auto tableElement = table.Render() | ftxui::border | ftxui::color(ftxui::Color::Yellow);
+    auto tableElement = table.Render() | ftxui::border | ftxui::color(ftxui::Color::Yellow) ;
 
     // Use FTXUI's Renderer to display the table
     auto screen = ftxui::ScreenInteractive::FitComponent();
@@ -75,7 +75,26 @@ void displayAgenda(const agenda& agenda) {
     // Start the FTXUI loop
     screen.Loop(component);
 }
+void displayTest() {
+    cout << "This is a test\n";
+}
+void menu() {
+    int menuChoice = 1;
+    switch (menuChoice) {
+    case 1: {
+        cout << "Creating a new event\n";
+        break;
+        }
+    case 2: {
+        cout << "editing an existing event\n";
+        break;
+    }
+    default:
+        cout << "Nothing has been selected please try again\n";
+        cout << "Help should be available @ https://github.com/matwin04/ClockPlusPlus\n";
+    }
 
+}
 int main() {
 	cout << "Hello World\n";
 	string filePath = "calendar.xml";
@@ -94,9 +113,7 @@ int main() {
     // Display the updated agenda
     cout << "\nUpdated agenda:\n";
     displayAgenda(agenda);
-
+    cout << "Built by Matthew Winer\n";
+    menu();
     return 0;
-
-
-	return 0;
 }
