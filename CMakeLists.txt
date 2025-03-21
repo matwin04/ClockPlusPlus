@@ -1,38 +1,21 @@
-# Minimum version and project setup
-cmake_minimum_required(VERSION 3.24)
-project(ClockPlusPlus)
+cmake_minimum_required(VERSION 3.15)
+project(ClockPlusPlus LANGUAGES CXX)
 
-# Add your source files
-set(SOURCES
-    main.cpp
-    CalendarEvent.cpp
-    Agenda.cpp
-)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
-set(HEADERS
-    CalendarEvent.h
-    Agenda.h
-)
+include(FetchContent)
+FetchContent_Declare(SFML
+        GIT_REPOSITORY https://github.com/SFML/SFML.git
+        GIT_TAG 3.0.0
+        GIT_SHALLOW ON
+        EXCLUDE_FROM_ALL
+        SYSTEM)
+FetchContent_MakeAvailable(SFML)
 
-add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(TAGLIB REQUIRED IMPORTED_TARGET taglib)
+find_package(raylib REQUIRED)
 
-# Find required libraries
-find_package(pugixml CONFIG REQUIRED)
-find_package(ftxui CONFIG REQUIRED)
-
-# Link libraries
-target_link_libraries(${PROJECT_NAME} PRIVATE pugixml ftxui::screen ftxui::dom ftxui::component)
-
-# Set output directory for the executable
-set_target_properties(${PROJECT_NAME} PROPERTIES
-    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
-)
-
-# Specify the path to the calendar.xml file
-set(CALENDAR_XML ${CMAKE_SOURCE_DIR}/calendar.xml)
-
-# Copy calendar.xml to the output directory
-add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy ${CALENDAR_XML} $<TARGET_FILE_DIR:ClockPlusPlus>
-    COMMENT "Copying calendar.xml to the output directory"
-)
+add_executable(${PROJECT_NAME} main.cpp)
+target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
+target_link_libraries(${PROJECT_NAME} PRIVATE sfml-audio PkgConfig::TAGLIB raylib)
